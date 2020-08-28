@@ -1,0 +1,36 @@
+.AddTask {     
+}
+
+.AddTask input {
+    width: 80%;
+    padding: 15px 0px;
+    margin: 10px 0px;
+    background-color: #F9F9F9;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    outline: none;
+    text-align: left;
+    color: #343B3C;
+    font-size: medium;
+    font-family: inherit
+}
+
+.AddTask input::placeholder {
+    opacity: 0.5;
+}
+
+.AddTask button {
+    width: 18%;
+    padding: 15px 0px;
+    margin: 15px 0px 15px 10px;
+    background-color: #511D47;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    outline: none;
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    color: #fff;
+    cursor: pointer;
+    font-family: inherit
+}

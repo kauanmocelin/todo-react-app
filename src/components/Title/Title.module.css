@@ -1,0 +1,10 @@
+.Title {
+    text-align: center;
+    color: rgb(255, 79, 97, 0.6);
+}
+
+.Title h1 {
+    font-size: 64px;
+    font-weight: lighter;
+    opacity: 0.5;
+}

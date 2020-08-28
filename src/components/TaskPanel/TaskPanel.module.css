@@ -1,0 +1,17 @@
+.TaskPanel {
+    color: #343B3C;
+
+}
+
+.TaskPanel button {
+    width: 15%;
+    padding: 10px 0px;
+    margin: 15px 0px 15px 15px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    background-color: #fff;
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+    font-family: inherit;
+}

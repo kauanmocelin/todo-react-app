@@ -1,0 +1,25 @@
+.Task {
+    width: 100%;
+    padding: 15px 0px;
+    margin: 10px 0px;
+    background-color: #F9F9F9;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    text-align: left;
+    font-weight: lighter;
+    color: #343B3C;
+}
+
+.Task label {
+    padding: 0px 15px;
+}
+
+.DeleteIcon {
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.Done {
+    text-decoration: line-through;
+    color: rgb(52,59,60,0.5);
+}
