@@ -13,11 +13,15 @@ const taskPanel = (props) => {
 
     return (
         <div className={classes.TaskPanel}>
-            {doneTasks.length} tarefas pendentes
-            <button onClick={() => { statusFilterChangeHandler('') }}>Todas</button>
-            <button onClick={() => { statusFilterChangeHandler('c') }}>Completas</button>
-            <button onClick={() => { statusFilterChangeHandler('p') }}>Pendentes</button>
-            <button onClick={() => props.clearTasks()}>Limpar tarefas completas</button>
+            <div className={classes.TaskPanel__status}>
+                {doneTasks.length} tarefas pendentes
+            </div>
+            <div className={classes.TaskPanel__buttons}>
+                <button onClick={() => { statusFilterChangeHandler('') }}>Todas</button>
+                <button onClick={() => { statusFilterChangeHandler('c') }}>Completas</button>
+                <button onClick={() => { statusFilterChangeHandler('p') }}>Pendentes</button>
+                <button onClick={() => props.clearTasks()}>Limpar tarefas completas</button>
+            </div>
         </div >
     )
 }

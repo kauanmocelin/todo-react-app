@@ -1,10 +1,20 @@
-.AddTask {     
+.AddTask {  
+    width: 100%;
+    margin: 20px auto;
+}
+
+.AddTask__input {
+    display: inline-block;
+    width: calc(100% - 85px);
+}
+
+.AddTask__addButton {
+    display: inline-block;
 }
 
 .AddTask input {
-    width: 80%;
-    padding: 15px 0px;
-    margin: 10px 0px;
+    width: 100%;
+    padding: 10px 10px;
     background-color: #F9F9F9;
     border: 1px solid #eee;
     border-radius: 10px;
@@ -12,7 +22,8 @@
     text-align: left;
     color: #343B3C;
     font-size: medium;
-    font-family: inherit
+    font-family: inherit;
+    box-sizing: border-box;
 }
 
 .AddTask input::placeholder {
@@ -20,17 +31,16 @@
 }
 
 .AddTask button {
-    width: 18%;
-    padding: 15px 0px;
-    margin: 15px 0px 15px 10px;
+    width: 85px;
+    padding: 10px 10px;
     background-color: #511D47;
     border: 1px solid #eee;
     border-radius: 10px;
     outline: none;
     text-align: center;
     font-weight: bold;
-    font-size: 12px;
     color: #fff;
     cursor: pointer;
-    font-family: inherit
+    font-family: inherit;
+    box-sizing: border-box;
 }

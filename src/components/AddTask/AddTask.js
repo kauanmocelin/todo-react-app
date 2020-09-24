@@ -20,12 +20,16 @@ class AddTask extends Component {
     render() {
         return (
             <div className={classes.AddTask}>
-                <input
-                    type="text"
-                    placeholder={'Insira aqui sua próxima tarefa'}
-                    value={this.state.description}
-                    onChange={this.setDescription} />
-                <button onClick={this.addTaskDescriptionHandler}>Adicionar</button>
+                <div className={classes.AddTask__input}>
+                    <input
+                        type="text"
+                        placeholder={'Insira aqui sua próxima tarefa'}
+                        value={this.state.description}
+                        onChange={this.setDescription} />
+                </div>
+                <div className={classes.AddTask__addButton}>
+                    <button onClick={this.addTaskDescriptionHandler}>Adicionar</button>
+                </div>
             </div>
         )
     }
