@@ -3,6 +3,8 @@ import React from 'react'
 import Task from '../Task/Task'
 import TaskPanel from '../TaskPanel/TaskPanel'
 
+import classes from './TaskList.module.css'
+
 const taskList = ({ tasks, onToggleTaskDone, onDelete, show, hide, clearTasks, statusFilter, onStatusFilterChange }) => {
 
     const taskList = tasks.filter(task => {
@@ -34,7 +36,7 @@ const taskList = ({ tasks, onToggleTaskDone, onDelete, show, hide, clearTasks, s
     }
 
     return (
-        <div>
+        <div className={classes.TaskList}>
             {taskList}
             {taskPanel}
         </div>

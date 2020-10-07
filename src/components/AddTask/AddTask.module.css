@@ -1,46 +1,47 @@
-.AddTask {  
-    width: 100%;
-    margin: 20px auto;
+.AddTask {
+  margin: 20px 0;
+  display: flex;
+  flex-basis: 100%;
+  justify-content: space-between;
 }
 
 .AddTask__input {
-    display: inline-block;
-    width: calc(100% - 85px);
+  flex: 10 1 auto;
 }
 
 .AddTask__addButton {
-    display: inline-block;
+  flex: 1 1 auto;
 }
 
 .AddTask input {
-    width: 100%;
-    padding: 10px 10px;
-    background-color: #F9F9F9;
-    border: 1px solid #eee;
-    border-radius: 10px;
-    outline: none;
-    text-align: left;
-    color: #343B3C;
-    font-size: medium;
-    font-family: inherit;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 10px 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  outline: none;
+  text-align: left;
+  color: #343b3c;
+  font-size: medium;
+  font-family: inherit;
+  box-sizing: border-box;
 }
 
 .AddTask input::placeholder {
-    opacity: 0.5;
+  opacity: 0.5;
 }
 
 .AddTask button {
-    width: 85px;
-    padding: 10px 10px;
-    background-color: #511D47;
-    border: 1px solid #eee;
-    border-radius: 10px;
-    outline: none;
-    text-align: center;
-    font-weight: bold;
-    color: #fff;
-    cursor: pointer;
-    font-family: inherit;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 10px 10px;
+  background-color: #511d47;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  outline: none;
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  font-family: inherit;
+  box-sizing: border-box;
 }

@@ -1,34 +1,29 @@
 .TaskPanel {
-    width: 100%;
-    margin: 20px auto;
-    color: #343B3C;
+  margin: 20px 0;
+  color: #343b3c;
+  display: flex;
+  justify-content: space-between;
 }
 
 .TaskPanel__status {
-    display: inline-block;
-    width: 30%;
-    text-align: left;
 }
 
 .TaskPanel__buttons {
-    display: inline-block;
-    width: 70%;
-    text-align: right;
 }
 
 .TaskPanel button {
-    padding: 10px 10px;
-    margin: 0px 1px;
-    border: 1px solid #eee;
-    border-radius: 10px;
-    background-color: #fff;
-    outline: none;
-    text-align: center;
-    cursor: pointer;
-    font-family: inherit;
+  padding: 10px 10px;
+  margin: 0px 1px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  background-color: #fff;
+  outline: none;
+  text-align: center;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .TaskPanel button:hover,
 .TaskPanel button:active {
-    border-color: rgb(80, 80, 80);
+  border-color: rgb(80, 80, 80);
 }

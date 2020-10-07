@@ -1,26 +1,25 @@
 .Task {
-    width: 100%;
-    padding: 10px 10px;
-    margin: 10px 0px;
-    background-color: #F9F9F9;
-    border: 1px solid #eee;
-    border-radius: 10px;
-    text-align: left;
-    font-weight: lighter;
-    color: #343B3C;
-    box-sizing: border-box;
+  padding: 10px 10px;
+  margin: 10px 0px;
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  text-align: left;
+  font-weight: lighter;
+  color: #343b3c;
+  box-sizing: border-box;
 }
 
 .Task label {
-    padding: 0px 0px;
+  padding: 0px 0px;
 }
 
 .DeleteIcon {
-    cursor: pointer;
-    vertical-align: middle;
+  cursor: pointer;
+  vertical-align: middle;
 }
 
 .Done {
-    text-decoration: line-through;
-    color: rgb(52,59,60,0.5);
+  text-decoration: line-through;
+  color: rgb(52, 59, 60, 0.5);
 }

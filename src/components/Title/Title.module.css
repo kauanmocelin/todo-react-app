@@ -1,10 +1,12 @@
 .Title {
-    text-align: center;
-    color: rgb(255, 79, 97);
+  text-align: center;
+  color: rgb(255, 79, 97);
+  flex-grow: 1;
+  flex-basis: 100%;
 }
 
 .Title h1 {
-    font-size: 64px;
-    font-weight: lighter;
-    opacity: 0.5;
+  font-size: 64px;
+  font-weight: lighter;
+  opacity: 0.5;
 }
