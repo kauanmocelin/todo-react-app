@@ -29,6 +29,7 @@ const task = (props) => {
                     className={classes.DeleteIcon}
                     src={deleteIcon}
                     alt='Excluir tarefa'
+                    title='Excluir tarefa'
                     onClick={() => { props.onDelete(props.id) }} /> : null
             }
         </div >

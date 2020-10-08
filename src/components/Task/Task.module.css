@@ -4,10 +4,11 @@
   background-color: #f9f9f9;
   border: 1px solid #eee;
   border-radius: 10px;
-  text-align: left;
   font-weight: lighter;
   color: #343b3c;
   box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
 }
 
 .Task label {
