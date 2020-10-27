@@ -15,6 +15,7 @@ const taskList = ({ tasks, onToggleTaskDone, onDelete, show, hide, clearTasks, s
         return (
             <Task
                 key={task.id}
+                id={task.id}
                 description={task.description}
                 showDeleteIcon={task.showDeleteIcon}
                 onToggleTaskDone={() => onToggleTaskDone(task.id)}

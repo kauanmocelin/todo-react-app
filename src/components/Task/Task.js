@@ -1,39 +1,51 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import classes from './Task.module.css'
 import { TiDeleteOutline } from 'react-icons/ti'
 
-const task = (props) => {
+const task = ({ id, done, description, showDeleteIcon, show, hide, onToggleTaskDone, onDelete }) => {
     const checkTaskHandler = () => {
-        props.onToggleTaskDone(props.id)
+        onToggleTaskDone(id)
     }
 
     let attachedClasses = [classes.Task]
-    if (props.done) {
+    if (done) {
         attachedClasses = [classes.Task, classes.Done]
     }
 
     return (
         <div className={attachedClasses.join(' ')}
-            onMouseEnter={() => props.show(props.id)}
-            onMouseLeave={() => props.hide(props.id)}>
+            onMouseEnter={() => show(id)}
+            onMouseLeave={() => hide(id)}>
             <label>
                 <input
                     type="checkbox"
-                    checked={props.done}
+                    checked={done}
                     onChange={checkTaskHandler} />
-                {props.description}
+                {description}
             </label>
             {
-                props.showDeleteIcon ? <TiDeleteOutline
+                showDeleteIcon ? <TiDeleteOutline
                     className={classes.DeleteIcon}
                     size={'1.2em'}
                     color={'#f8374b'}
                     title='Excluir tarefa'
-                    onClick={() => { props.onDelete(props.id) }} /> : null
+                    onClick={() => { onDelete(id) }} /> : null
             }
         </div >
     )
+}
+
+task.propTypes = {
+    id: PropTypes.string.isRequired,
+    done: PropTypes.bool.isRequired,
+    description: PropTypes.string.isRequired,
+    showDeleteIcon: PropTypes.bool.isRequired,
+    show: PropTypes.func.isRequired,
+    hide: PropTypes.func.isRequired,
+    onToggleTaskDone: PropTypes.func.isRequired,
+    onDelete: PropTypes.func.isRequired
 }
 
 export default task
