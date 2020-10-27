@@ -13,7 +13,7 @@
   flex: 1 1 auto;
 }
 
-.AddTask input {
+.AddTask input[type="text"] {
   width: 100%;
   padding: 10px 10px;
   background-color: #f9f9f9;
@@ -30,7 +30,7 @@
   opacity: 0.5;
 }
 
-.AddTask button {
+.AddTask input[type="submit"] {
   width: 100%;
   padding: 10px 10px;
   background-color: #511d47;

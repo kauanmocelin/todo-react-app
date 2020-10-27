@@ -19,7 +19,7 @@ class AddTask extends Component {
 
     render() {
         return (
-            <div className={classes.AddTask}>
+            <form onSubmit={this.addTaskDescriptionHandler} className={classes.AddTask}>
                 <div className={classes.AddTask__input}>
                     <input
                         type="text"
@@ -28,9 +28,9 @@ class AddTask extends Component {
                         onChange={this.setDescription} />
                 </div>
                 <div className={classes.AddTask__addButton}>
-                    <button onClick={this.addTaskDescriptionHandler}>Adicionar</button>
+                    <input type="submit" value="Adicionar" />
                 </div>
-            </div>
+            </form>
         )
     }
 }
