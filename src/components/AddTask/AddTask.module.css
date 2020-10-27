@@ -24,7 +24,6 @@
   color: #343b3c;
   font-size: medium;
   font-family: inherit;
-  box-sizing: border-box;
 }
 
 .AddTask input::placeholder {
@@ -43,5 +42,4 @@
   color: #fff;
   cursor: pointer;
   font-family: inherit;
-  box-sizing: border-box;
 }
