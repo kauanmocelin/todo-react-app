@@ -7,10 +7,21 @@ import { v4 as uuidv4 } from 'uuid'
 
 import classes from './TodoBuilder.module.css'
 
+const LOCAL_STORAGE_TASKS = 'todoapp.tasks'
+
 class TodoBuilder extends Component {
     state = {
         tasks: [],
         statusFilter: ''
+    }
+
+    componentDidMount() {
+        const storedTasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_TASKS))
+        if (storedTasks) this.setState({ tasks: storedTasks })
+    }
+
+    componentDidUpdate() {
+        localStorage.setItem(LOCAL_STORAGE_TASKS, JSON.stringify(this.state.tasks))
     }
 
     addTaskHandler = taskDescription => {
