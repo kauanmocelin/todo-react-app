@@ -1,7 +1,7 @@
 import React from 'react'
 
 import classes from './Task.module.css'
-import deleteIcon from '../../assets/clear.svg'
+import { TiDeleteOutline } from 'react-icons/ti'
 
 const task = (props) => {
     const checkTaskHandler = () => {
@@ -25,10 +25,10 @@ const task = (props) => {
                 {props.description}
             </label>
             {
-                props.showDeleteIcon ? <img
+                props.showDeleteIcon ? <TiDeleteOutline
                     className={classes.DeleteIcon}
-                    src={deleteIcon}
-                    alt='Excluir tarefa'
+                    size={'1.2em'}
+                    color={'#f8374b'}
                     title='Excluir tarefa'
                     onClick={() => { props.onDelete(props.id) }} /> : null
             }
