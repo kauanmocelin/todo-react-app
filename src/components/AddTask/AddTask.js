@@ -1,39 +1,41 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 import classes from './AddTask.module.css'
 
-class AddTask extends Component {
-    state = {
-        description: ''
+const AddTask = (props) => {
+    const [input, setInput] = useState('');
+    const inputRef = useRef(null)
+
+    useEffect(() => (
+        inputRef.current.focus()
+    ))
+
+    const setDescription = (event) => {
+        setInput(event.target.value)
     }
 
-    setDescription = (event) => {
-        this.setState({ description: event.target.value })
-    }
-
-    addTaskDescriptionHandler = (event) => {
+    const addTaskDescriptionHandler = (event) => {
         event.preventDefault()
-        if (!this.state.description) return
-        this.props.onAddTask(this.state.description)
-        this.setState({ description: '' })
+        if (!input) return
+        props.onAddTask(input)
+        setInput('')
     }
 
-    render() {
-        return (
-            <form onSubmit={this.addTaskDescriptionHandler} className={classes.AddTask}>
-                <div className={classes.AddTask__input}>
-                    <input
-                        type="text"
-                        placeholder={'Insira aqui sua próxima tarefa'}
-                        value={this.state.description}
-                        onChange={this.setDescription} />
-                </div>
-                <div className={classes.AddTask__addButton}>
-                    <input type="submit" value="Adicionar" />
-                </div>
-            </form>
-        )
-    }
+    return (
+        <form onSubmit={addTaskDescriptionHandler} className={classes.AddTask}>
+            <div className={classes.AddTask__input}>
+                <input
+                    type="text"
+                    placeholder={'Insira aqui sua próxima tarefa'}
+                    value={input}
+                    onChange={setDescription}
+                    ref={inputRef} />
+            </div>
+            <div className={classes.AddTask__addButton}>
+                <input type="submit" value="Adicionar" />
+            </div>
+        </form>
+    )
 }
 
 export default AddTask
