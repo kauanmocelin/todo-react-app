@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/27f727a2-2b08-43e0-b4ba-101f3a800936/deploy-status)](https://app.netlify.com/sites/clever-wright-8d485b/deploys)
+
 # Todo App React
 
 A simple Todo application.
