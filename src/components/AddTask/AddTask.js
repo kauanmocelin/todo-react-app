@@ -11,7 +11,8 @@ class AddTask extends Component {
         this.setState({ description: event.target.value })
     }
 
-    addTaskDescriptionHandler = () => {
+    addTaskDescriptionHandler = (event) => {
+        event.preventDefault()
         if (!this.state.description) return
         this.props.onAddTask(this.state.description)
         this.setState({ description: '' })
