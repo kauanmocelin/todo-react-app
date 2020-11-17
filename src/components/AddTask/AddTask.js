@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 
-import classes from './AddTask.module.css'
+import { Form, InputText, InputSubmit, InputWrapper, ButtonWrapper } from './style'
 
 const AddTask = (props) => {
     const [input, setInput] = useState('');
@@ -22,19 +22,20 @@ const AddTask = (props) => {
     }
 
     return (
-        <form onSubmit={addTaskDescriptionHandler} className={classes.AddTask}>
-            <div className={classes.AddTask__input}>
-                <input
-                    type="text"
+        <Form onSubmit={addTaskDescriptionHandler}>
+            <InputWrapper>
+                <InputText
                     placeholder={'Insira aqui sua próxima tarefa'}
                     value={input}
                     onChange={setDescription}
-                    ref={inputRef} />
-            </div>
-            <div className={classes.AddTask__addButton}>
-                <input type="submit" value="Adicionar" />
-            </div>
-        </form>
+                    ref={inputRef}
+                />
+            </InputWrapper>
+
+            <ButtonWrapper>
+                <InputSubmit value="Adicionar" />
+            </ButtonWrapper>
+        </Form>
     )
 }
 

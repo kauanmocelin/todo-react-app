@@ -1,11 +1,9 @@
 import React from 'react'
+import Wrapper from './style'
 
-import classes from './Title.module.css'
-
-const title = (props) => (
-    <div className={classes.Title}>
+const Title = (props) => (
+    <Wrapper>
         <h1>Lista de Tarefas</h1>
-    </div>
+    </Wrapper>
 )
-
-export default title
+export default Title

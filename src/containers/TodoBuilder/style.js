@@ -1,4 +1,6 @@
-.TodoBuilder {
+import styled from 'styled-components'
+
+const Container = styled.div`
   width: 1000px;
   padding: 0px 15px;
   border-radius: 10px;
@@ -8,4 +10,5 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
+`
+export default Container

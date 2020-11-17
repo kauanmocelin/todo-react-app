@@ -1,6 +1,6 @@
 import React from 'react'
 
-import classes from './TaskPanel.module.css'
+import { Container, WrapperElement, Button } from './style'
 
 const taskPanel = (props) => {
     const doneTasks = props.tasks.filter(task => {
@@ -12,18 +12,17 @@ const taskPanel = (props) => {
     }
 
     return (
-        <div className={classes.TaskPanel}>
-            <div className={classes.TaskPanel__status}>
+        <Container>
+            <WrapperElement>
                 {doneTasks.length} tarefas pendentes
-            </div>
-            <div className={classes.TaskPanel__buttons}>
-                <button onClick={() => { statusFilterChangeHandler('') }}>Todas</button>
-                <button onClick={() => { statusFilterChangeHandler('c') }}>Completas</button>
-                <button onClick={() => { statusFilterChangeHandler('p') }}>Pendentes</button>
-                <button onClick={() => props.clearTasks()}>Limpar tarefas completas</button>
-            </div>
-        </div >
-    )
+            </WrapperElement>
+            <WrapperElement>
+                <Button onClick={() => { statusFilterChangeHandler('') }}>Todas</Button>
+                <Button onClick={() => { statusFilterChangeHandler('c') }}>Completas</Button>
+                <Button onClick={() => { statusFilterChangeHandler('p') }}>Pendentes</Button>
+                <Button onClick={() => props.clearTasks()}>Limpar tarefas completas</Button>
+            </WrapperElement>
+        </Container>)
 }
 
 export default taskPanel

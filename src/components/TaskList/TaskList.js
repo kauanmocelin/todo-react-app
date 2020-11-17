@@ -2,8 +2,7 @@ import React from 'react'
 
 import Task from '../Task/Task'
 import TaskPanel from '../TaskPanel/TaskPanel'
-
-import classes from './TaskList.module.css'
+import Wrapper from './style'
 
 const taskList = ({ tasks, onToggleTaskDone, onDelete, show, hide, clearTasks, statusFilter, onStatusFilterChange }) => {
     const taskList = tasks.filter(task => {
@@ -36,10 +35,10 @@ const taskList = ({ tasks, onToggleTaskDone, onDelete, show, hide, clearTasks, s
     }
 
     return (
-        <div className={classes.TaskList}>
+        <Wrapper>
             {taskList}
             {taskPanel}
-        </div>
+        </Wrapper>
     )
 }
 

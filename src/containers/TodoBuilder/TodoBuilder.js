@@ -5,7 +5,7 @@ import TaskList from '../../components/TaskList/TaskList'
 import AddTask from '../../components/AddTask/AddTask'
 import { v4 as uuidv4 } from 'uuid'
 
-import classes from './TodoBuilder.module.css'
+import Container from './style'
 
 const LOCAL_STORAGE_TASKS = 'todoapp.tasks'
 
@@ -72,7 +72,7 @@ const TodoBuilder = () => {
     }
 
     return (
-        <div className={classes.TodoBuilder}>
+        <Container>
             <Title />
             <AddTask onAddTask={addTaskHandler} />
             <TaskList
@@ -84,7 +84,7 @@ const TodoBuilder = () => {
                 clearTasks={clearDoneTasksHandler}
                 onStatusFilterChange={statusFilterChangeHandler}
                 statusFilter={statusFilter} />
-        </div>
+        </Container>
     )
 }
 
