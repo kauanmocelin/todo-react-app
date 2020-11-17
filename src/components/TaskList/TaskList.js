@@ -6,7 +6,6 @@ import TaskPanel from '../TaskPanel/TaskPanel'
 import classes from './TaskList.module.css'
 
 const taskList = ({ tasks, onToggleTaskDone, onDelete, show, hide, clearTasks, statusFilter, onStatusFilterChange }) => {
-
     const taskList = tasks.filter(task => {
         if (statusFilter === 'p' && task.done) return false
         if (statusFilter === 'c' && !task.done) return false

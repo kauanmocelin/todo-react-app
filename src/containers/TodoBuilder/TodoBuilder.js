@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import Title from '../../components/Title/Title'
 import TaskList from '../../components/TaskList/TaskList'
@@ -9,86 +9,83 @@ import classes from './TodoBuilder.module.css'
 
 const LOCAL_STORAGE_TASKS = 'todoapp.tasks'
 
-class TodoBuilder extends Component {
-    state = {
-        tasks: [],
-        statusFilter: ''
-    }
+const TodoBuilder = () => {
+    const [tasks, setTasks] = useState([])
+    const [statusFilter, setStatusFilter] = useState('')
 
-    componentDidMount() {
+    useEffect(() => {
         const storedTasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_TASKS))
-        if (storedTasks) this.setState({ tasks: storedTasks })
-    }
+        if (storedTasks) setTasks(storedTasks)
+    }, [])
 
-    componentDidUpdate() {
-        localStorage.setItem(LOCAL_STORAGE_TASKS, JSON.stringify(this.state.tasks))
-    }
+    useEffect(() => {
+        localStorage.setItem(LOCAL_STORAGE_TASKS, JSON.stringify(tasks))
+    }, [tasks])
 
-    addTaskHandler = taskDescription => {
-        const newTaskData = [...this.state.tasks]
+    const addTaskHandler = (taskDescription) => {
+        const newTaskData = [...tasks]
         newTaskData.push({
             id: uuidv4(),
             description: taskDescription,
             done: false,
             showDeleteIcon: false
         })
-        this.setState({ tasks: newTaskData })
+        setTasks(newTaskData)
     }
 
-    deleteTaskHandler = (id) => {
-        const newTaskData = [...this.state.tasks]
+    const deleteTaskHandler = (id) => {
+        const newTaskData = [...tasks]
         const updatedTaskData = newTaskData.filter(task => task.id !== id)
-        this.setState({ tasks: updatedTaskData })
+        setTasks(updatedTaskData)
     }
 
-    toggleTaskDoneHandler = (id) => {
-        const newTaskData = [...this.state.tasks]
+    const toggleTaskDoneHandler = (id) => {
+        const newTaskData = [...tasks]
         const taskToogle = newTaskData.find(task => task.id === id)
         taskToogle.done = !taskToogle.done
-        this.setState({ tasks: newTaskData })
+        setTasks(newTaskData)
     }
 
-    showDeleteIconHandler = (id) => {
-        const newTaskData = [...this.state.tasks]
+    const showDeleteIconHandler = (id) => {
+        const newTaskData = [...tasks]
         const taskToogle = newTaskData.find(task => task.id === id)
         taskToogle.showDeleteIcon = true
-        this.setState({ tasks: newTaskData })
+        setTasks(newTaskData)
     }
 
-    hideDeleteIconHandler = (id) => {
-        const newTaskData = [...this.state.tasks]
+    const hideDeleteIconHandler = (id) => {
+        const newTaskData = [...tasks]
         const taskToogle = newTaskData.find(task => task.id === id)
         taskToogle.showDeleteIcon = false
-        this.setState({ tasks: newTaskData })
+        setTasks(newTaskData)
     }
 
-    clearDoneTasksHandler = () => {
-        const tasks = [...this.state.tasks]
-        const pendentTasks = tasks.filter(task => !task.done)
-        this.setState({ tasks: pendentTasks })
+    const clearDoneTasksHandler = () => {
+        const newTaskData = [...tasks]
+        const pendentTasks = newTaskData.filter(task => !task.done)
+        setTasks(pendentTasks)
     }
 
-    statusFilterChangeHandler = (typeFilter) => {
-        this.setState({ statusFilter: typeFilter })
+    const statusFilterChangeHandler = (typeFilter) => {
+        setStatusFilter(typeFilter)
+        // setState({ statusFilter: typeFilter })
     }
 
-    render() {
-        return (
-            <div className={classes.TodoBuilder}>
-                <Title />
-                <AddTask onAddTask={this.addTaskHandler} />
-                <TaskList
-                    tasks={this.state.tasks}
-                    onToggleTaskDone={this.toggleTaskDoneHandler}
-                    onDelete={this.deleteTaskHandler}
-                    show={this.showDeleteIconHandler}
-                    hide={this.hideDeleteIconHandler}
-                    clearTasks={this.clearDoneTasksHandler}
-                    onStatusFilterChange={this.statusFilterChangeHandler}
-                    statusFilter={this.state.statusFilter} />
-            </div>
-        )
-    }
+    return (
+        <div className={classes.TodoBuilder}>
+            <Title />
+            <AddTask onAddTask={addTaskHandler} />
+            <TaskList
+                tasks={tasks}
+                onToggleTaskDone={toggleTaskDoneHandler}
+                onDelete={deleteTaskHandler}
+                show={showDeleteIconHandler}
+                hide={hideDeleteIconHandler}
+                clearTasks={clearDoneTasksHandler}
+                onStatusFilterChange={statusFilterChangeHandler}
+                statusFilter={statusFilter} />
+        </div>
+    )
 }
 
 export default TodoBuilder
