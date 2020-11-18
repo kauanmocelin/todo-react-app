@@ -1,12 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 import { Wrapper, Label, StyledTiDeleteOutline } from './style'
 
 const Task = ({ id, done, description, showDeleteIcon, show, hide, onToggleTaskDone, onDelete }) => {
     const checkTaskHandler = () => {
         onToggleTaskDone(id)
     }
+
+    const handleDelete = () => {
+        onDelete(id)
+        toast.success('Tarefa excluída');
+    }
+
+
     return (
         <Wrapper done={done}
             onMouseEnter={() => show(id)}
@@ -21,7 +29,7 @@ const Task = ({ id, done, description, showDeleteIcon, show, hide, onToggleTaskD
             {
                 showDeleteIcon ? <StyledTiDeleteOutline
                     title='Excluir tarefa'
-                    onClick={() => { onDelete(id) }}
+                    onClick={handleDelete}
                 /> : null
             }
         </Wrapper>

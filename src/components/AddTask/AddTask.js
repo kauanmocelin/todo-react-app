@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
-
 import { Form, InputText, InputSubmit, InputWrapper, ButtonWrapper } from './style'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddTask = (props) => {
     const [input, setInput] = useState('');
@@ -16,9 +17,12 @@ const AddTask = (props) => {
 
     const addTaskDescriptionHandler = (event) => {
         event.preventDefault()
-        if (!input) return
+        if (!input) {
+            return toast.warn('Não foi possível adicionar tarefa. Informe uma descrição');
+        }
         props.onAddTask(input)
         setInput('')
+        toast.success('Tarefa adicionada');
     }
 
     return (
