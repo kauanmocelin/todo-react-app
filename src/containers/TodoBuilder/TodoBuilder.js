@@ -5,44 +5,43 @@ import TaskList from '../../components/TaskList/TaskList'
 import AddTask from '../../components/AddTask/AddTask'
 import { v4 as uuidv4 } from 'uuid'
 
-import Container from './style'
+import * as RepositoryTask from '../../services/RepositoryTask'
 
-const LOCAL_STORAGE_TASKS = 'todoapp.tasks'
+import Container from './style'
 
 const TodoBuilder = () => {
     const [tasks, setTasks] = useState([])
     const [statusFilter, setStatusFilter] = useState('')
 
     useEffect(() => {
-        const storedTasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_TASKS))
+        const storedTasks = RepositoryTask.getAll()
         if (storedTasks) setTasks(storedTasks)
     }, [])
 
     useEffect(() => {
-        localStorage.setItem(LOCAL_STORAGE_TASKS, JSON.stringify(tasks))
+        RepositoryTask.save(tasks)
     }, [tasks])
 
     const addTaskHandler = (taskDescription) => {
-        const newTaskData = [...tasks]
-        newTaskData.push({
+        const newTask = {
             id: uuidv4(),
             description: taskDescription,
             done: false,
             showDeleteIcon: false
-        })
-        setTasks(newTaskData)
+        }
+        const newTasks = [...tasks, newTask]
+        setTasks(newTasks)
     }
 
     const deleteTaskHandler = (id) => {
-        const newTaskData = [...tasks]
-        const updatedTaskData = newTaskData.filter(task => task.id !== id)
-        setTasks(updatedTaskData)
+        const updatedTask = tasks.filter(task => task.id !== id)
+        setTasks(updatedTask)
     }
 
     const toggleTaskDoneHandler = (id) => {
-        const newTaskData = [...tasks]
-        const taskToogle = newTaskData.find(task => task.id === id)
-        taskToogle.done = !taskToogle.done
+        const newTaskData = tasks.map(task =>
+            task.id === id ? { ...task, done: !task.done } : task
+        )
         setTasks(newTaskData)
     }
 
@@ -68,7 +67,6 @@ const TodoBuilder = () => {
 
     const statusFilterChangeHandler = (typeFilter) => {
         setStatusFilter(typeFilter)
-        // setState({ statusFilter: typeFilter })
     }
 
     return (
