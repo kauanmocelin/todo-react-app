@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, useContext } from 'react';
 
 const ManageTaskContext = createContext({
     deleteTaskHandler: () => { },
@@ -7,4 +7,6 @@ const ManageTaskContext = createContext({
     hideDeleteIconHandler: () => { }
 });
 
-export default ManageTaskContext;
+export const useManageTask = () => useContext(ManageTaskContext)
+
+export default ManageTaskContext

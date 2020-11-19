@@ -14,7 +14,6 @@ const TodoBuilder = () => {
     const [tasks, setTasks] = useState([])
     const [statusFilter, setStatusFilter] = useState('')
 
-
     useEffect(() => {
         const storedTasks = RepositoryTask.getAll()
         if (storedTasks) setTasks(storedTasks)
@@ -41,24 +40,24 @@ const TodoBuilder = () => {
     }
 
     const toggleTaskDoneHandler = (id) => {
-        const newTaskData = tasks.map(task =>
+        const newTasks = tasks.map(task =>
             task.id === id ? { ...task, done: !task.done } : task
         )
-        setTasks(newTaskData)
+        setTasks(newTasks)
     }
 
     const showDeleteIconHandler = (id) => {
-        const newTaskData = [...tasks]
-        const taskToogle = newTaskData.find(task => task.id === id)
-        taskToogle.showDeleteIcon = true
-        setTasks(newTaskData)
+        const newTasks = tasks.map(task =>
+            task.id === id ? { ...task, showDeleteIcon: true } : task
+        )
+        setTasks(newTasks)
     }
 
     const hideDeleteIconHandler = (id) => {
-        const newTaskData = [...tasks]
-        const taskToogle = newTaskData.find(task => task.id === id)
-        taskToogle.showDeleteIcon = false
-        setTasks(newTaskData)
+        const newTasks = tasks.map(task =>
+            task.id === id ? { ...task, showDeleteIcon: false } : task
+        )
+        setTasks(newTasks)
     }
 
     const clearDoneTasksHandler = () => {
