@@ -4,7 +4,7 @@ import Task from '../Task/Task'
 import TaskPanel from '../TaskPanel/TaskPanel'
 import Wrapper from './style'
 
-const taskList = ({ tasks, onToggleTaskDone, onDelete, show, hide, clearTasks, statusFilter, onStatusFilterChange }) => {
+const taskList = ({ tasks, clearTasks, statusFilter, onStatusFilterChange }) => {
     const taskList = tasks.filter(task => {
         if (statusFilter === 'p' && task.done) return false
         if (statusFilter === 'c' && !task.done) return false
@@ -16,11 +16,7 @@ const taskList = ({ tasks, onToggleTaskDone, onDelete, show, hide, clearTasks, s
                 id={task.id}
                 description={task.description}
                 showDeleteIcon={task.showDeleteIcon}
-                onToggleTaskDone={() => onToggleTaskDone(task.id)}
-                done={task.done}
-                onDelete={() => onDelete(task.id)}
-                show={() => show(task.id)}
-                hide={() => hide(task.id)} />
+                done={task.done} />
         )
     })
 

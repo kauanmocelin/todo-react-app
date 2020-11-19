@@ -4,14 +4,16 @@ import Title from '../../components/Title/Title'
 import TaskList from '../../components/TaskList/TaskList'
 import AddTask from '../../components/AddTask/AddTask'
 import { v4 as uuidv4 } from 'uuid'
-
 import * as RepositoryTask from '../../services/RepositoryTask'
+
+import ManageTaskContext from '../../context/ManageTaskContext'
 
 import Container from './style'
 
 const TodoBuilder = () => {
     const [tasks, setTasks] = useState([])
     const [statusFilter, setStatusFilter] = useState('')
+
 
     useEffect(() => {
         const storedTasks = RepositoryTask.getAll()
@@ -73,15 +75,13 @@ const TodoBuilder = () => {
         <Container>
             <Title />
             <AddTask onAddTask={addTaskHandler} />
-            <TaskList
-                tasks={tasks}
-                onToggleTaskDone={toggleTaskDoneHandler}
-                onDelete={deleteTaskHandler}
-                show={showDeleteIconHandler}
-                hide={hideDeleteIconHandler}
-                clearTasks={clearDoneTasksHandler}
-                onStatusFilterChange={statusFilterChangeHandler}
-                statusFilter={statusFilter} />
+            <ManageTaskContext.Provider value={{ deleteTaskHandler, toggleTaskDoneHandler, showDeleteIconHandler, hideDeleteIconHandler }}>
+                <TaskList
+                    tasks={tasks}
+                    clearTasks={clearDoneTasksHandler}
+                    onStatusFilterChange={statusFilterChangeHandler}
+                    statusFilter={statusFilter} />
+            </ManageTaskContext.Provider>
         </Container>
     )
 }

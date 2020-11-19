@@ -1,29 +1,28 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { Wrapper, Label, StyledTiDeleteOutline } from './style'
 
-const Task = ({ id, done, description, showDeleteIcon, show, hide, onToggleTaskDone, onDelete }) => {
-    const checkTaskHandler = () => {
-        onToggleTaskDone(id)
-    }
+import ManageTaskContext from '../../context/ManageTaskContext'
+
+const Task = ({ id, done, description, showDeleteIcon }) => {
+    const manageTaskContext = useContext(ManageTaskContext)
 
     const handleDelete = () => {
-        onDelete(id)
+        manageTaskContext.deleteTaskHandler(id)
         toast.success('Tarefa excluída');
     }
 
-
     return (
         <Wrapper done={done}
-            onMouseEnter={() => show(id)}
-            onMouseLeave={() => hide(id)}>
+            onMouseEnter={() => manageTaskContext.showDeleteIconHandler(id)}
+            onMouseLeave={() => manageTaskContext.hideDeleteIconHandler(id)}>
             <Label>
                 <input
                     type="checkbox"
                     checked={done}
-                    onChange={checkTaskHandler} />
+                    onChange={() => manageTaskContext.toggleTaskDoneHandler(id)} />
                 {description}
             </Label>
             {
