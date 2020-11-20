@@ -3,7 +3,9 @@ import Wrapper from './style'
 
 const Title = (props) => (
     <Wrapper>
-        <h1>Lista de Tarefas</h1>
+        <header>
+            <h1>K1 Todo List</h1>
+        </header>
     </Wrapper>
 )
 export default Title
