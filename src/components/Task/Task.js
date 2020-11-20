@@ -40,10 +40,6 @@ Task.propTypes = {
     done: PropTypes.bool.isRequired,
     description: PropTypes.string.isRequired,
     showDeleteIcon: PropTypes.bool.isRequired,
-    show: PropTypes.func.isRequired,
-    hide: PropTypes.func.isRequired,
-    onToggleTaskDone: PropTypes.func.isRequired,
-    onDelete: PropTypes.func.isRequired
 }
 
 export default Task
