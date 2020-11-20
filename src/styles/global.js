@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
     height: 100vh;
     font-family: 'Lato', sans-serif;
     font-size: medium;
-    background: #202020;
+    background: linear-gradient(#e66465, #9198e5);
     display: flex;
     align-items: center;
     justify-content: center;
