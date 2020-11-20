@@ -1,15 +1,13 @@
 import styled from 'styled-components'
 
-const Wrapper = styled.div`
+const Header = styled.header`
     text-align: center;
-    color: #ff4f61;
-    flex-grow: 1;
-    flex-basis: 100%;
+    color: #f1f1f1;
 
     h1 {
-        font-size: 64px;
+        font-size: 5em;
         font-weight: lighter;
         opacity: 0.5;
     }
 `
-export default Wrapper
+export default Header

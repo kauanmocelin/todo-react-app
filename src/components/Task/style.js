@@ -2,12 +2,10 @@ import styled from 'styled-components'
 import { TiDeleteOutline } from 'react-icons/ti'
 
 export const Wrapper = styled.div`
-  padding: 10px 10px;
-  margin: 10px 0px;
-  background-color: #f9f9f9;
-  border: 1px solid #eee;
-  border-radius: 10px;
-  color: #343b3c;
+  padding: 0.8rem;
+  font-size: 1rem;
+  margin: 0.7rem 0px;
+  background-color: rgba(249, 249, 249, 0.7);
   display: flex;
   justify-content: space-between;
 

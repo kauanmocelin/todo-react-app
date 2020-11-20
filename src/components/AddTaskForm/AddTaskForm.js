@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Form, InputText, InputSubmit, InputWrapper, ButtonWrapper } from './style'
+import { Form, InputText, AddButton, Button } from './style'
+import { SiAddthis } from 'react-icons/si'
 import { toast } from 'react-toastify'
+
 import 'react-toastify/dist/ReactToastify.css';
 
-const AddTask = (props) => {
+const AddTaskForm = (props) => {
     const [input, setInput] = useState('');
     const inputRef = useRef(null)
 
@@ -27,20 +29,17 @@ const AddTask = (props) => {
 
     return (
         <Form onSubmit={addTaskDescriptionHandler}>
-            <InputWrapper>
-                <InputText
-                    placeholder={'Insira aqui sua próxima tarefa'}
-                    value={input}
-                    onChange={setDescription}
-                    ref={inputRef}
-                />
-            </InputWrapper>
-
-            <ButtonWrapper>
-                <InputSubmit value="Adicionar" />
-            </ButtonWrapper>
+            <InputText
+                placeholder={'Insira aqui sua próxima tarefa'}
+                value={input}
+                onChange={setDescription}
+                ref={inputRef}
+            />
+            <AddButton onClick={addTaskDescriptionHandler}>
+                <SiAddthis />
+            </AddButton>
         </Form>
     )
 }
 
-export default AddTask
+export default AddTaskForm

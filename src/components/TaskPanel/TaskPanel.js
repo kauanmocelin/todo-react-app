@@ -26,7 +26,7 @@ const taskPanel = (props) => {
                 <Button onClick={() => { statusFilterChangeHandler('') }}>Todas</Button>
                 <Button onClick={() => { statusFilterChangeHandler('c') }}>Completas</Button>
                 <Button onClick={() => { statusFilterChangeHandler('p') }}>Pendentes</Button>
-                <Button onClick={clearTasksHandler}>Limpar tarefas completas</Button>
+                <Button onClick={clearTasksHandler}>Limpar Completas</Button>
             </WrapperElement>
         </Container>)
 }

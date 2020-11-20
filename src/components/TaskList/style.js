@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  flex-basis: 100%;
+  min-width: 40%;
 `
 export default Wrapper

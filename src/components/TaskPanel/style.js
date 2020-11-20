@@ -11,14 +11,14 @@ export const Container = styled.div`
 export const WrapperElement = styled.div``
 
 export const Button = styled.button`
-  padding: 10px 10px;
+  padding: 0.5rem;
   margin: 0px 1px;
   border: 1px solid #eee;
   border-radius: 10px;
-  background-color: #fff;
+  background-color: rgba(249, 249, 249, 0.7);
+  font-size: 1rem;
   outline: none;
   font-family: inherit;
-  font-size: medium;
   cursor: pointer;
 
   &:hover, &:active {

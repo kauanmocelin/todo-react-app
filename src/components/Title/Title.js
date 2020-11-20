@@ -1,11 +1,9 @@
 import React from 'react'
-import Wrapper from './style'
+import Header from './style'
 
 const Title = (props) => (
-    <Wrapper>
-        <header>
-            <h1>K1 Todo List</h1>
-        </header>
-    </Wrapper>
+    <Header>
+        <h1>Lista de Tarefas</h1>
+    </Header>
 )
 export default Title

@@ -4,7 +4,7 @@ import Task from '../Task/Task'
 import TaskPanel from '../TaskPanel/TaskPanel'
 import Wrapper from './style'
 
-const taskList = ({ tasks, clearTasks, statusFilter, onStatusFilterChange }) => {
+const TaskList = ({ tasks, clearTasks, statusFilter, onStatusFilterChange }) => {
     const taskList = tasks.filter(task => {
         if (statusFilter === 'p' && task.done) return false
         if (statusFilter === 'c' && !task.done) return false
@@ -15,7 +15,6 @@ const taskList = ({ tasks, clearTasks, statusFilter, onStatusFilterChange }) => 
                 key={task.id}
                 id={task.id}
                 description={task.description}
-                showDeleteIcon={task.showDeleteIcon}
                 done={task.done} />
         )
     })
@@ -32,10 +31,10 @@ const taskList = ({ tasks, clearTasks, statusFilter, onStatusFilterChange }) => 
 
     return (
         <Wrapper>
-            {taskList}
-            {taskPanel}
+            { taskList}
+            { taskPanel}
         </Wrapper>
     )
 }
 
-export default taskList
+export default TaskList
