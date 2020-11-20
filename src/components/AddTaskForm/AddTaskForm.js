@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Form, InputText, AddButton, Button } from './style'
+import { Form, InputText, AddButton } from './style'
 import { SiAddthis } from 'react-icons/si'
 import { toast } from 'react-toastify'
 
