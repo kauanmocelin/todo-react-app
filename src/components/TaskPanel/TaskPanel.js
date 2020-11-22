@@ -1,19 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { Container, WrapperElement, Button } from './style'
 
-const taskPanel = (props) => {
-    const doneTasks = props.tasks.filter(task => {
+import { TaskContext } from '../../context/TaskContext'
+
+const TaskPanel = ({ onStatusFilterChange }) => {
+    const { tasks, clearDoneTasks } = useContext(TaskContext)
+
+    const doneTasks = tasks.filter(task => {
         return !task.done
     })
 
     const statusFilterChangeHandler = (typeFilter) => {
-        props.onStatusFilterChange(typeFilter)
+        onStatusFilterChange(typeFilter)
     }
 
     const clearTasksHandler = () => {
-        props.clearTasks()
+        clearDoneTasks()
         toast.success('Removidas tarefas completas');
     }
 
@@ -31,4 +35,4 @@ const taskPanel = (props) => {
         </Container>)
 }
 
-export default taskPanel
+export default TaskPanel

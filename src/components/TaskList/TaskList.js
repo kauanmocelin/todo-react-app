@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import Task from '../Task/Task'
 import TaskPanel from '../TaskPanel/TaskPanel'
 import Wrapper from './style'
 
-const TaskList = ({ tasks, clearTasks, statusFilter, onStatusFilterChange }) => {
+import { TaskContext } from '../../context/TaskContext'
+
+const TaskList = ({ statusFilter, onStatusFilterChange }) => {
+    const { tasks } = useContext(TaskContext)
+
     const taskList = tasks.filter(task => {
         if (statusFilter === 'p' && task.done) return false
         if (statusFilter === 'c' && !task.done) return false
@@ -22,10 +26,7 @@ const TaskList = ({ tasks, clearTasks, statusFilter, onStatusFilterChange }) => 
     let taskPanel = null
     if (tasks.length > 0) {
         taskPanel = (
-            <TaskPanel
-                tasks={tasks}
-                clearTasks={clearTasks}
-                onStatusFilterChange={onStatusFilterChange} />
+            <TaskPanel onStatusFilterChange={onStatusFilterChange} />
         )
     }
 

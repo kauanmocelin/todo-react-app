@@ -1,12 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
 import { Form, InputText, AddButton } from './style'
 import { SiAddthis } from 'react-icons/si'
 import { toast } from 'react-toastify'
+import { v4 as uuidv4 } from 'uuid'
+
+import { TaskContext } from '../../context/TaskContext'
 
 import 'react-toastify/dist/ReactToastify.css';
 
 const AddTaskForm = (props) => {
     const [input, setInput] = useState('');
+    const { tasks, setTasks } = useContext(TaskContext)
     const inputRef = useRef(null)
 
     useEffect(() => (
@@ -22,7 +26,14 @@ const AddTaskForm = (props) => {
         if (!input) {
             return toast.warn('Não foi possível adicionar tarefa. Informe uma descrição');
         }
-        props.onAddTask(input)
+
+        const newTask = {
+            id: uuidv4(),
+            description: input,
+            done: false
+        }
+        const newTasks = [...tasks, newTask]
+        setTasks(newTasks)
         setInput('')
         toast.success('Tarefa adicionada');
     }
