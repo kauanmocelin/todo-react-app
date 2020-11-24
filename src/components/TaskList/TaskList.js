@@ -1,13 +1,18 @@
-import React, { useContext } from 'react'
+import React, { useState } from 'react'
 
 import Task from '../Task/Task'
 import TaskPanel from '../TaskPanel/TaskPanel'
 import Wrapper from './style'
 
-import { TaskContext } from '../../context/TaskContext'
+import { useTask } from '../../context/TaskContext'
 
-const TaskList = ({ statusFilter, onStatusFilterChange }) => {
-    const { tasks } = useContext(TaskContext)
+const TaskList = () => {
+    const { tasks } = useTask()
+    const [statusFilter, setStatusFilter] = useState('')
+
+    const onStatusFilterChange = (typeFilter) => {
+        setStatusFilter(typeFilter)
+    }
 
     const taskList = tasks.filter(task => {
         if (statusFilter === 'p' && task.done) return false
@@ -19,7 +24,8 @@ const TaskList = ({ statusFilter, onStatusFilterChange }) => {
                 key={task.id}
                 id={task.id}
                 description={task.description}
-                done={task.done} />
+                done={task.done}
+            />
         )
     })
 

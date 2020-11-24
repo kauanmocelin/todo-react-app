@@ -1,12 +1,11 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css';
 import { Container, WrapperElement, Button } from './style'
 
-import { TaskContext } from '../../context/TaskContext'
+import { useTask } from '../../context/TaskContext'
 
 const TaskPanel = ({ onStatusFilterChange }) => {
-    const { tasks, clearDoneTasks } = useContext(TaskContext)
+    const { tasks, clearDoneTasks } = useTask()
 
     const doneTasks = tasks.filter(task => {
         return !task.done

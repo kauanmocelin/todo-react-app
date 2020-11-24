@@ -1,39 +1,37 @@
-import React, { useState, useEffect, useRef, useContext } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Form, InputText, AddButton } from './style'
 import { SiAddthis } from 'react-icons/si'
 import { toast } from 'react-toastify'
 import { v4 as uuidv4 } from 'uuid'
 
-import { TaskContext } from '../../context/TaskContext'
+import { useTask } from '../../context/TaskContext'
 
-import 'react-toastify/dist/ReactToastify.css';
-
-const AddTaskForm = (props) => {
+const TaskForm = () => {
+    const { tasks, setTasks } = useTask()
     const [input, setInput] = useState('');
-    const { tasks, setTasks } = useContext(TaskContext)
     const inputRef = useRef(null)
 
     useEffect(() => (
         inputRef.current.focus()
-    ))
+    ), [])
 
-    const setDescription = (event) => {
+    const onChangeInput = (event) => {
         setInput(event.target.value)
     }
 
     const addTaskDescriptionHandler = (event) => {
         event.preventDefault()
-        if (!input) {
-            return toast.warn('Não foi possível adicionar tarefa. Informe uma descrição');
-        }
+        if (!input) return toast.warn('Não foi possível adicionar tarefa. Informe uma descrição');
 
-        const newTask = {
-            id: uuidv4(),
-            description: input,
-            done: false
-        }
-        const newTasks = [...tasks, newTask]
-        setTasks(newTasks)
+        setTasks(() => {
+            return [...tasks,
+            {
+                id: uuidv4(),
+                description: input,
+                done: false
+            }
+            ]
+        })
         setInput('')
         toast.success('Tarefa adicionada');
     }
@@ -43,7 +41,7 @@ const AddTaskForm = (props) => {
             <InputText
                 placeholder={'Insira aqui sua próxima tarefa'}
                 value={input}
-                onChange={setDescription}
+                onChange={onChangeInput}
                 ref={inputRef}
             />
             <AddButton onClick={addTaskDescriptionHandler}>
@@ -53,4 +51,4 @@ const AddTaskForm = (props) => {
     )
 }
 
-export default AddTaskForm
+export default TaskForm

@@ -1,7 +1,8 @@
 import React from 'react';
-import TodoBuilder from './containers/TodoBuilder/TodoBuilder';
+import TodoBuilder from './components/TodoBuilder/TodoBuilder';
 import GlobalStyle from './styles/global'
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (

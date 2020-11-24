@@ -1,9 +1,9 @@
-import React, { useState, createContext, useEffect } from 'react';
+import React, { useState, createContext, useEffect, useContext } from 'react';
 import * as RepositoryTask from '../services/RepositoryTask'
 
-export const TaskContext = createContext()
+const TaskContext = createContext()
 
-export const TaskProvider = (props) => {
+export const TaskProvider = ({ children }) => {
     const [tasks, setTasks] = useState([])
 
     useEffect(() => {
@@ -31,14 +31,19 @@ export const TaskProvider = (props) => {
     }
 
     const clearDoneTasks = () => {
-        const newTaskData = [...tasks]
-        const pendentTasks = newTaskData.filter(task => !task.done)
-        setTasks(pendentTasks)
+        setTasks(() => {
+            return tasks.filter(task => !task.done)
+        })
     }
 
     return (
         <TaskContext.Provider value={{ tasks, setTasks, deleteTask, toggleTaskDone, clearDoneTasks }} >
-            { props.children}
+            {children}
         </TaskContext.Provider >
     )
+}
+
+export const useTask = () => {
+    const { tasks, setTasks, deleteTask, toggleTaskDone, clearDoneTasks } = useContext(TaskContext)
+    return { tasks, setTasks, deleteTask, toggleTaskDone, clearDoneTasks }
 }
