@@ -36,14 +36,19 @@ export const TaskProvider = ({ children }) => {
         })
     }
 
+    const value = {
+        tasks,
+        setTasks,
+        deleteTask,
+        toggleTaskDone,
+        clearDoneTasks
+    }
+
     return (
-        <TaskContext.Provider value={{ tasks, setTasks, deleteTask, toggleTaskDone, clearDoneTasks }} >
+        <TaskContext.Provider value={value} >
             {children}
         </TaskContext.Provider >
     )
 }
 
-export const useTask = () => {
-    const { tasks, setTasks, deleteTask, toggleTaskDone, clearDoneTasks } = useContext(TaskContext)
-    return { tasks, setTasks, deleteTask, toggleTaskDone, clearDoneTasks }
-}
+export const useTask = () => useContext(TaskContext)
