@@ -8,6 +8,7 @@ const TaskPanel = ({ onStatusFilterChange }) => {
     const { tasks, clearDoneTasks } = useTask()
 
     const doneTasks = tasks.filter(task => {
+        console.log('recalcula')
         return !task.done
     })
 

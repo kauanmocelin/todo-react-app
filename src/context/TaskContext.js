@@ -17,23 +17,23 @@ export const TaskProvider = ({ children }) => {
 
 
     const deleteTask = (id) => {
-        setTasks(() => {
-            return tasks.filter(task => task.id !== id)
-        })
+        setTasks(
+            tasks.filter(task => task.id !== id)
+        )
     }
 
     const toggleTaskDone = (id) => {
-        setTasks(() => {
-            return tasks.map(task =>
+        setTasks(
+            tasks.map(task =>
                 task.id === id ? { ...task, done: !task.done } : task
             )
-        })
+        )
     }
 
     const clearDoneTasks = () => {
-        setTasks(() => {
-            return tasks.filter(task => !task.done)
-        })
+        setTasks(
+            tasks.filter(task => !task.done)
+        )
     }
 
     const value = {
