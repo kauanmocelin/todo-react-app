@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { toast } from 'react-toastify'
 import { Container, WrapperElement, Button } from './style'
 
@@ -7,10 +7,11 @@ import { useTask } from '../../context/TaskContext'
 const TaskPanel = ({ onStatusFilterChange }) => {
     const { tasks, clearDoneTasks } = useTask()
 
-    const doneTasks = tasks.filter(task => {
-        console.log('recalcula')
-        return !task.done
-    })
+    const doneTasks = useMemo(() => {
+        return tasks.filter(task => {
+            return !task.done
+        })
+    }, [tasks])
 
     const statusFilterChangeHandler = (typeFilter) => {
         onStatusFilterChange(typeFilter)
