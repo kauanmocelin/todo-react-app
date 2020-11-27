@@ -1,9 +1,9 @@
 import React from 'react'
 import Header from './style'
 
-const Title = (props) => (
+const TitleApp = (props) => (
     <Header>
         <h1>Lista de Tarefas</h1>
     </Header>
 )
-export default Title
+export default TitleApp

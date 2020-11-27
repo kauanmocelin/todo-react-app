@@ -1,20 +1,25 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css';
 import { Container, WrapperElement, Button } from './style'
 
-const taskPanel = (props) => {
-    const doneTasks = props.tasks.filter(task => {
-        return !task.done
-    })
+import { useTask } from '../../context/TaskContext'
+
+const TaskPanel = ({ onStatusFilterChange }) => {
+    const { tasks, clearDoneTasks } = useTask()
+
+    const doneTasks = useMemo(() => {
+        return tasks.filter(task => {
+            return !task.done
+        })
+    }, [tasks])
 
     const statusFilterChangeHandler = (typeFilter) => {
-        props.onStatusFilterChange(typeFilter)
+        onStatusFilterChange(typeFilter)
     }
 
     const clearTasksHandler = () => {
-        props.clearTasks()
-        toast.success('Removidas tarefas completas');
+        clearDoneTasks()
+        toast.success('Todas as tarefas completas foram removidas');
     }
 
     return (
@@ -31,4 +36,4 @@ const taskPanel = (props) => {
         </Container>)
 }
 
-export default taskPanel
+export default TaskPanel
