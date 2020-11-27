@@ -19,7 +19,7 @@ const TaskPanel = ({ onStatusFilterChange }) => {
 
     const clearTasksHandler = () => {
         clearDoneTasks()
-        toast.success('Removidas tarefas completas');
+        toast.success('Todas as tarefas completas foram removidas');
     }
 
     return (

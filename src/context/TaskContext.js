@@ -1,4 +1,5 @@
 import React, { useState, createContext, useEffect, useContext } from 'react';
+import { v4 as uuidv4 } from 'uuid'
 import * as RepositoryTask from '../services/RepositoryTask'
 
 const TaskContext = createContext()
@@ -15,6 +16,16 @@ export const TaskProvider = ({ children }) => {
         RepositoryTask.save(tasks)
     }, [tasks])
 
+    const saveTask = (task) => {
+        if (!task.description) throw new Error('Não foi possível adicionar tarefa pois não foi informado descrição')
+
+        const newTask = {
+            id: uuidv4(),
+            description: task.description,
+            done: false
+        }
+        setTasks([...tasks, newTask])
+    }
 
     const deleteTask = (id) => {
         setTasks(
@@ -38,7 +49,7 @@ export const TaskProvider = ({ children }) => {
 
     const value = {
         tasks,
-        setTasks,
+        saveTask,
         deleteTask,
         toggleTaskDone,
         clearDoneTasks

@@ -2,13 +2,12 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Form, InputText, AddButton } from './style'
 import { SiAddthis } from 'react-icons/si'
 import { toast } from 'react-toastify'
-import { v4 as uuidv4 } from 'uuid'
 
 import { useTask } from '../../context/TaskContext'
 
 const TaskForm = () => {
-    const { tasks, setTasks } = useTask()
-    const [input, setInput] = useState('');
+    const { saveTask } = useTask()
+    const [task, setTask] = useState({ description: '' })
     const inputRef = useRef(null)
 
     useEffect(() => (
@@ -16,35 +15,29 @@ const TaskForm = () => {
     ), [])
 
     const onChangeInput = (event) => {
-        setInput(event.target.value)
+        setTask({ description: event.target.value })
     }
 
-    const addTaskDescriptionHandler = (event) => {
+    const addTask = (event) => {
         event.preventDefault()
-        if (!input) return toast.warn('Não foi possível adicionar tarefa. Informe uma descrição');
-
-        setTasks(() => {
-            return [...tasks,
-            {
-                id: uuidv4(),
-                description: input,
-                done: false
-            }
-            ]
-        })
-        setInput('')
-        toast.success('Tarefa adicionada');
+        try {
+            saveTask(task)
+            setTask({ description: '' })
+            toast.success('Tarefa adicionada');
+        } catch (error) {
+            return toast.warn(error.message);
+        }
     }
 
     return (
-        <Form onSubmit={addTaskDescriptionHandler}>
+        <Form onSubmit={addTask}>
             <InputText
                 placeholder={'Insira aqui sua próxima tarefa'}
-                value={input}
+                value={task.description}
                 onChange={onChangeInput}
                 ref={inputRef}
             />
-            <AddButton onClick={addTaskDescriptionHandler}>
+            <AddButton onClick={addTask}>
                 <SiAddthis />
             </AddButton>
         </Form>
