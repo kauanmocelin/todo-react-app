@@ -1,13 +1,14 @@
 import styled from 'styled-components'
-import { TiDeleteOutline } from 'react-icons/ti'
+import { TiDelete, TiEdit } from 'react-icons/ti'
 
 export const Wrapper = styled.div`
-  padding: 0.8rem;
-  font-size: 1rem;
+  padding: 1rem;
+  font-size: 1.2rem;
   margin: 0.7rem 0px;
   background-color: rgba(249, 249, 249, 0.7);
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   ${({ done }) => done && `
     text-decoration: line-through;
@@ -15,12 +16,15 @@ export const Wrapper = styled.div`
   `}
 `
 
-export const Label = styled.label`
-  padding: 0px 0px;
+export const StyledTiDelete = styled(TiDelete)`
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: crimson;
+  margin-right: 3px;
 `
 
-export const StyledTiDeleteOutline = styled(TiDeleteOutline)`
+export const StyledTiEdit = styled(TiEdit)`
   cursor: pointer;
-  font-size: 1.2em;
-  color: #f8374b;
+  font-size: 1.5rem;
+  color: darkorange;
 `

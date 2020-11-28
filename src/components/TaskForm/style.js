@@ -25,8 +25,8 @@ export const InputText = styled.input.attrs({
 `
 
 export const AddButton = styled.button`
-  padding: 0.8rem;
-  font-size: 1rem;
+  padding: 0.65rem;
+  font-size: 1.2rem;
   border: none;
   color: #444ec1;
   background-color: rgba(249, 249, 249, 0.7);
