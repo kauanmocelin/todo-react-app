@@ -39,20 +39,20 @@ const Task = ({ id, done, description }) => {
                 {description}
             </label>
             <div>
-                {showDeleteIcon && (
-                    <StyledTiDelete
-                        title='Excluir tarefa'
-                        onClick={onClickDelete}
-                    />
-                )}
                 {showEditIcon && (
                     <StyledTiEdit
                         title='Editar tarefa'
                         onClick={onClickEdit}
                     />
                 )}
+                {showDeleteIcon && (
+                    <StyledTiDelete
+                        title='Excluir tarefa'
+                        onClick={onClickDelete}
+                    />
+                )}
             </div>
-        </Wrapper>
+        </Wrapper >
     )
 }
 
