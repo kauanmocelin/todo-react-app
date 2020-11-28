@@ -25,7 +25,8 @@ const TaskPanel = ({ onStatusFilterChange }) => {
     return (
         <Container>
             <WrapperElement>
-                {doneTasks.length} tarefas pendentes
+                {doneTasks.length === 1 && `${doneTasks.length} tarefa pendente`}
+                {doneTasks.length > 1 && `${doneTasks.length} tarefas pendentes`}
             </WrapperElement>
             <WrapperElement>
                 <Button onClick={() => { statusFilterChangeHandler('') }}>Todas</Button>
