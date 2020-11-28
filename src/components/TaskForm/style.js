@@ -2,10 +2,10 @@ import styled from 'styled-components'
 
 export const Form = styled.form`
   min-height: 15vh;
+  width: 768px;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 40%;
 `
 
 export const InputText = styled.input.attrs({
