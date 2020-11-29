@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  min-width: 768px;
+  padding: 0.5rem 1rem;
 `
 export default Wrapper

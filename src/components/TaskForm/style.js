@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
 export const Form = styled.form`
-  min-height: 15vh;
-  width: 768px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  padding: 1rem;
+  margin-bottom: 1rem;
 `
 
 export const InputText = styled.input.attrs({
