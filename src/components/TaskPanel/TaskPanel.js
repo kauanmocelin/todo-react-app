@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import { toast } from 'react-toastify'
-import { Container, WrapperElement, Button } from './style'
+import { Container, Button } from './style'
 
 import { useTask } from '../../context/TaskContext'
 
@@ -24,16 +24,16 @@ const TaskPanel = ({ onStatusFilterChange }) => {
 
     return (
         <Container>
-            <WrapperElement>
+            <div>
                 {doneTasks.length === 1 && `${doneTasks.length} tarefa pendente`}
                 {doneTasks.length > 1 && `${doneTasks.length} tarefas pendentes`}
-            </WrapperElement>
-            <WrapperElement>
+            </div>
+            <div>
                 <Button onClick={() => { statusFilterChangeHandler('') }}>Todas</Button>
                 <Button onClick={() => { statusFilterChangeHandler('c') }}>Completas</Button>
                 <Button onClick={() => { statusFilterChangeHandler('p') }}>Pendentes</Button>
                 <Button onClick={clearTasksHandler}>Limpar Completas</Button>
-            </WrapperElement>
+            </div>
         </Container>)
 }
 
