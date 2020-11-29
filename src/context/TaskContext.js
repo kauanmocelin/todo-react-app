@@ -6,6 +6,7 @@ const TaskContext = createContext()
 
 export const TaskProvider = ({ children }) => {
     const [tasks, setTasks] = useState([])
+    const [editItem, setEditItem] = useState(null)
 
     useEffect(() => {
         const storedTasks = RepositoryTask.getAll()
@@ -33,6 +34,22 @@ export const TaskProvider = ({ children }) => {
         )
     }
 
+    const findTask = id => {
+        setEditItem(
+            tasks.find(task => task.id === id)
+        )
+    }
+
+    const editTask = (id, newDescription) => {
+        if (!newDescription) throw new Error('Não foi possível adicionar tarefa pois não foi informado descrição')
+        setTasks(
+            tasks.map(task =>
+                task.id === id ? { ...task, description: newDescription } : task
+            )
+        )
+        setEditItem(null)
+    }
+
     const toggleTaskDone = (id) => {
         setTasks(
             tasks.map(task =>
@@ -51,6 +68,9 @@ export const TaskProvider = ({ children }) => {
         tasks,
         saveTask,
         deleteTask,
+        findTask,
+        editTask,
+        editItem,
         toggleTaskDone,
         clearDoneTasks
     }

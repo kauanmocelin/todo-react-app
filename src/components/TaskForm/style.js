@@ -4,8 +4,8 @@ export const Form = styled.form`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
-  margin-bottom: 1rem;
+  width: 90%;
+  margin: 2rem auto;
 `
 
 export const InputText = styled.input.attrs({
@@ -16,6 +16,7 @@ export const InputText = styled.input.attrs({
   font-family: inherit;
   border: none;
   background-color: rgba(249, 249, 249, 0.7);
+  color: #423F5D;
   outline: none;
   flex-grow: 1;
 
@@ -28,7 +29,7 @@ export const AddButton = styled.button`
   padding: 0.65rem;
   font-size: 1.2rem;
   border: none;
-  color: #444ec1;
+  color: #423F5D;
   background-color: rgba(249, 249, 249, 0.7);
   transition: all 0.3s ease;
   outline: none;
@@ -36,6 +37,6 @@ export const AddButton = styled.button`
 
   &:hover {
     color: #f9f9f9;
-    background-color: #444ec1;
+    background-color: #ce748b;
   }
 `

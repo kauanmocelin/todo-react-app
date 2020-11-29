@@ -1,15 +1,21 @@
 import React, { useMemo } from 'react'
 import { toast } from 'react-toastify'
-import { Container, Button } from './style'
+import { Wrapper, Button, ActionButton } from './style'
 
 import { useTask } from '../../context/TaskContext'
 
 const TaskPanel = ({ onStatusFilterChange }) => {
     const { tasks, clearDoneTasks } = useTask()
 
-    const doneTasks = useMemo(() => {
+    const pendentTasks = useMemo(() => {
         return tasks.filter(task => {
             return !task.done
+        })
+    }, [tasks])
+
+    const existAtLeastOneDoneTask = useMemo(() => {
+        return tasks.some(task => {
+            return task.done === true
         })
     }, [tasks])
 
@@ -23,18 +29,18 @@ const TaskPanel = ({ onStatusFilterChange }) => {
     }
 
     return (
-        <Container>
+        <Wrapper>
             <div>
-                {doneTasks.length === 1 && `${doneTasks.length} tarefa pendente`}
-                {doneTasks.length > 1 && `${doneTasks.length} tarefas pendentes`}
+                {pendentTasks.length === 1 && `${pendentTasks.length} tarefa pendente`}
+                {pendentTasks.length > 1 && `${pendentTasks.length} tarefas pendentes`}
             </div>
             <div>
                 <Button onClick={() => { statusFilterChangeHandler('') }}>Todas</Button>
-                <Button onClick={() => { statusFilterChangeHandler('c') }}>Completas</Button>
-                <Button onClick={() => { statusFilterChangeHandler('p') }}>Pendentes</Button>
-                <Button onClick={clearTasksHandler}>Limpar Completas</Button>
+                {existAtLeastOneDoneTask && <Button onClick={() => { statusFilterChangeHandler('c') }}>Completas</Button>}
+                {pendentTasks.length > 0 && <Button onClick={() => { statusFilterChangeHandler('p') }}>Pendentes</Button>}
+                {existAtLeastOneDoneTask && <ActionButton onClick={clearTasksHandler}>Limpar Completas</ActionButton>}
             </div>
-        </Container>)
+        </Wrapper>)
 }
 
 export default TaskPanel

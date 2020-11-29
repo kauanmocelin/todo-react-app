@@ -1,23 +1,18 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { toast } from 'react-toastify'
-import { Wrapper, StyledTiDelete, StyledTiEdit } from './style'
+import { Wrapper, StyledTiDelete, StyledTiEdit, Span } from './style'
 
 import { useTask } from '../../context/TaskContext'
 
 const Task = ({ id, done, description }) => {
     const [showDeleteIcon, setShowDeleteIcon] = useState(false)
+    const { deleteTask, findTask, toggleTaskDone } = useTask()
     const [showEditIcon, setShowEditIcon] = useState(false)
-    const { deleteTask, toggleTaskDone } = useTask()
 
     const onClickDelete = () => {
         deleteTask(id)
         toast.success('Tarefa excluída');
-    }
-
-    const onClickEdit = () => {
-        // deleteTask(id)
-        toast.success('Tarefa editada');
     }
 
     return (
@@ -36,13 +31,13 @@ const Task = ({ id, done, description }) => {
                     checked={done}
                     onChange={() => toggleTaskDone(id)}
                 />
-                {description}
+                <Span>{description}</Span>
             </label>
             <div>
                 {showEditIcon && (
                     <StyledTiEdit
                         title='Editar tarefa'
-                        onClick={onClickEdit}
+                        onClick={() => findTask(id)}
                     />
                 )}
                 {showDeleteIcon && (

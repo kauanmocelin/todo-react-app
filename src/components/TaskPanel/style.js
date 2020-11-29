@@ -1,26 +1,30 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 1rem 0;
   font-size: 0.90rem;
-  color: #343b3c;
+  color: #f1f1f1;
 `
 
 export const Button = styled.button`
   padding: 0.3rem;
   margin: 0px 1px;
-  border: 1px solid #eee;
-  border-radius: 10px;
   background-color: rgba(249, 249, 249, 0.7);
+  color: #423F5D;
   font-size: 0.75rem;
   outline: none;
   font-family: inherit;
   cursor: pointer;
 
   &:hover, &:active {
-    border-color: rgb(80, 80, 80);
+    opacity: 0.8;
   }
+`
+
+export const ActionButton = styled(Button)`
+  background-color: #ce748b;
+  color: #f1f1f1;
 `

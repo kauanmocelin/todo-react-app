@@ -3,18 +3,21 @@ import React from 'react'
 import TitleApp from '../TitleApp/TitleApp'
 import TaskList from '../TaskList/TaskList'
 import TaskForm from '../TaskForm/TaskForm'
-
 import { TaskProvider } from '../../context/TaskContext'
 
-import Container from './style'
+import { Container, AppWrapper, Main } from './style'
 
 const TodoBuilder = () => {
     return (
         <TaskProvider>
             <Container>
-                <TitleApp />
-                <TaskForm />
-                <TaskList />
+                <AppWrapper>
+                    <TitleApp />
+                    <Main>
+                        <TaskForm />
+                        <TaskList />
+                    </Main>
+                </AppWrapper>
             </Container>
         </TaskProvider>
     )
