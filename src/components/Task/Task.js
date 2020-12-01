@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { toast } from 'react-toastify'
 import { Wrapper, StyledTiDelete, StyledTiEdit, Span } from './style'
@@ -6,9 +6,7 @@ import { Wrapper, StyledTiDelete, StyledTiEdit, Span } from './style'
 import { useTask } from '../../context/TaskContext'
 
 const Task = ({ id, done, description }) => {
-    const [showDeleteIcon, setShowDeleteIcon] = useState(false)
     const { deleteTask, findTask, toggleTaskDone } = useTask()
-    const [showEditIcon, setShowEditIcon] = useState(false)
 
     const onClickDelete = () => {
         deleteTask(id)
@@ -16,15 +14,7 @@ const Task = ({ id, done, description }) => {
     }
 
     return (
-        <Wrapper done={done}
-            onMouseEnter={() => {
-                setShowDeleteIcon(true)
-                setShowEditIcon(true)
-            }}
-            onMouseLeave={() => {
-                setShowDeleteIcon(false)
-                setShowEditIcon(false)
-            }}>
+        <Wrapper done={done}>
             <label>
                 <input
                     type="checkbox"
@@ -34,18 +24,14 @@ const Task = ({ id, done, description }) => {
                 <Span>{description}</Span>
             </label>
             <div>
-                {showEditIcon && (
-                    <StyledTiEdit
-                        title='Editar tarefa'
-                        onClick={() => findTask(id)}
-                    />
-                )}
-                {showDeleteIcon && (
-                    <StyledTiDelete
-                        title='Excluir tarefa'
-                        onClick={onClickDelete}
-                    />
-                )}
+                <StyledTiEdit
+                    title='Editar tarefa'
+                    onClick={() => findTask(id)}
+                />
+                <StyledTiDelete
+                    title='Excluir tarefa'
+                    onClick={onClickDelete}
+                />
             </div>
         </Wrapper >
     )
