@@ -4,7 +4,6 @@ const Wrapper = styled.div`
   width: 90%;
   margin: auto;
   max-height: 450px;
-  overflow: hidden;
-  overflow-y: auto;
+  overflow: auto;
 `
 export default Wrapper
