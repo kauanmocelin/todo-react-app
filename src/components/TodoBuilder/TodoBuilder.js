@@ -5,20 +5,18 @@ import TaskList from '../TaskList/TaskList'
 import TaskForm from '../TaskForm/TaskForm'
 import { TaskProvider } from '../../context/TaskContext'
 
-import { Container, AppWrapper, Main } from './style'
+import { AppWrapper, Main } from './style'
 
 const TodoBuilder = () => {
     return (
         <TaskProvider>
-            <Container>
-                <AppWrapper>
-                    <TitleApp />
-                    <Main>
-                        <TaskForm />
-                        <TaskList />
-                    </Main>
-                </AppWrapper>
-            </Container>
+            <AppWrapper>
+                <TitleApp />
+                <Main>
+                    <TaskForm />
+                    <TaskList />
+                </Main>
+            </AppWrapper>
         </TaskProvider>
     )
 }
